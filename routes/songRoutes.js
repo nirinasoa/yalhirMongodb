@@ -71,6 +71,19 @@ app.post("/song", async (request, response) => {
       response.send(songs);
       } catch (error) {
       response.status(500).send(error);
-    }
-    
-});
+    }  
+  });
+
+  app.post("/searchsongByArtist", async (request, response) => {
+    const regex = new RegExp(request.body.search, 'i');  // 'i' makes it case insensitive
+    const songs = await SongModel.find({$and: [{
+      $or: [{ title: regex }, { paragraph1: regex }, { paragraph2: regex }, { paragraph3: regex }, { paragraph4: regex }, { paragraph5: regex }, { paragraph6: regex }]
+    },
+    { $or: [ { idArtist:request.body.idArtist} ] }
+    ]})
+    try {
+      response.send(songs);
+      } catch (error) {
+      response.status(500).send(error);
+    }  
+  });
