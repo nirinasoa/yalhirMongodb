@@ -56,14 +56,14 @@ app.post("/song", async (request, response) => {
   });
  
   
-  app.post("/songArtist", async (request, response) => {
-    const songs = await SongModel.find({idArtist:request.body.idArtist});
-     try {
-      response.send(songs);
-      } catch (error) {
-      response.status(500).send(error);}
+  // app.post("/songArtist", async (request, response) => {
+  //   const songs = await SongModel.find({idArtist:request.body.idArtist});
+  //    try {
+  //     response.send(songs);
+  //     } catch (error) {
+  //     response.status(500).send(error);}
     
-  });
+  // });
 
   app.post("/searchsong", async (request, response) => {
     const regex = new RegExp(request.body.search, 'i');  // 'i' makes it case insensitive
