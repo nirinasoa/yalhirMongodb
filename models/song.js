@@ -42,6 +42,18 @@ const SongSchema = new mongoose.Schema({
   paragraph6: {
     type: String,
   },
+  paragraph7: {
+    type: String,
+  },
+  paragraph8: {
+    type: String,
+  },
+  paragraph9: {
+    type: String,
+  },
+  paragraph10: {
+    type: String,
+  }
 },{ timestamps: true });
 
 const Song = mongoose.model("Song", SongSchema);
