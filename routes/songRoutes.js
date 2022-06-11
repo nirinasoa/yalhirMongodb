@@ -56,7 +56,7 @@ app.post("/song", async (request, response) => {
   });
 
   app.get("/songArtist/:id", async (request, response) => {
-    const artists = await SongModel.find({idArtist:request.params.id});
+    const artists = await SongModel.find({idArtist:request.params.id}).sort({createdAt:-1});
     try {
       response.send(artists);
     } catch (error) {
