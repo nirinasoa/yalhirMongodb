@@ -47,7 +47,7 @@ app.post("/artist", async (request, response) => {
   });
 
   app.get("/artistOne/:id", async (request, response) => {
-    const artists = await ArtistModel.findById(request.params.id);
+    const artists = await ArtistModel.find({idArtist:request.params.id});
     try {
       response.send(artists);
     } catch (error) {

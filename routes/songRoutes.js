@@ -55,6 +55,14 @@ app.post("/song", async (request, response) => {
     }
   });
 
+  app.get("/songArtist/:id", async (request, response) => {
+    const artists = await SongModel.find({idArtist:request.params.id});
+    try {
+      response.send(artists);
+    } catch (error) {
+      response.status(500).send(error);
+    }
+  });
 
   app.post("/searchsong", async (request, response) => {
     const regex = new RegExp(request.body.search, 'i');  // 'i' makes it case insensitive
