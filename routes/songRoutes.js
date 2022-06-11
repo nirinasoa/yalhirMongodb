@@ -54,13 +54,15 @@ app.post("/song", async (request, response) => {
       response.status(500).send(error);
     }
   });
-  app.get("/songArtist/:id", async (request, response) => {
-    const songs = await SongModel.find({idArtist: request.params.id});
-    try {
+ 
+  
+  app.post("/songArtist", async (request, response) => {
+    const songs = await SongModel.find({idArtist:request.body.idArtist});
+     try {
       response.send(songs);
-    } catch (error) {
-      response.status(500).send(error);
-    }
+      } catch (error) {
+      response.status(500).send(error);}
+    
   });
 
   app.post("/searchsong", async (request, response) => {
